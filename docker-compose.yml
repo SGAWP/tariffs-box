@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16.6
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  app:
+    build: .
+    container_name: node_app
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+    ports:
+      - "3200:3200"
+    depends_on:
+      - postgres
+    networks:
+      - backend
+    volumes:
+      - ./src:/app/src
+      - .env:/app/.env
+    command: ["sh", "-c", "npm run migrate:latest && npm run start"] 
+    restart: always
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
