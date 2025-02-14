@@ -37,7 +37,7 @@ SHEETS_IDS=18ngHblvPXFv7oGYY41PPrUn3LEB4jxBOWA33kZpoG24,1rY7upSuCoAJlOumxUQjl7_X
 Для работы с Google Sheets необходимо создать в корне проекта два файла: `token.json` и `refresh.json`
 
 ## 3.1. Генерация файла token.json
-  -Создайте проект в [Google Cloud Console](https://console.cloud.google.com/).
+ - Создайте проект в [Google Cloud Console](https://console.cloud.google.com/).
  - Включите Google Sheets API и создайте учетные данные для OAuth 2.0.
  - Скачайте файл с учетными данными и переименуйте его в token.json.
  - Пример содержимого файла token.json:
